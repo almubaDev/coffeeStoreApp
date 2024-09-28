@@ -5,6 +5,7 @@
 a.py
 b.py
 a.js
+requirements_dev.txt
 
 ### Django ###
 *.log

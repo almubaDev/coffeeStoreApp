@@ -1,0 +1,23 @@
+{% extends "base.html"  %}
+{% load static %}
+
+{% block css %}{% static "products/style.css" %}{% endblock css %}
+{% block title %}Products{% endblock title %}
+
+
+{% block header %}
+{% include "products/partials/header_product_manager.html" %}
+{% endblock header %}
+
+{% block main %}
+<h5 class='page_title'>Gestionar productos</h5>
+<input type="text" id="product_search" placeholder="Buscar productos..." class="product_search-input">
+
+<div id='product_manager_container'>
+{% for product in products %}
+     <a class='product_card_manager' href="{% url 'product_detail' product.id  %}"><span>cod.{{product.id}} <img src="{% static "products/img/edit_pen.svg" %}" alt=""></span> <p>{{product.name}}</p></a>
+{% endfor %}
+</div>
+
+<a href="{% url 'products_create' %}"><img class="add_product-btn" src="{% static 'products/img/add.svg' %}" alt="Botón agregar producto"></a>
+{% endblock main %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}{% static "products/style.css" %}{% endblock css %}
+{% block title %}Detalles{% endblock title %}
+
+{% block header %}
+{% include "products/partials/header_product_manager.html" %}
+{% endblock header %}
+
+{% block main %}
+<div class='control-product'>
+    <a href="{% url "products_list"%}">Volver</a>
+    <a href="{% url "product_edit" product.id %}">Editar</a>
+    <button id='delete-btn' data-bs-toggle="modal" data-bs-target="#deleteTaskModal">Eliminar</button>
+</div>
+<div class='product_card'>
+    <img src="{{product.product_image.url}}" alt="">
+    <div>
+        <p class='product_card_title'>{{product.name}} (<span class='product_card_code'>cod: {{product.id}}</span>)</p>
+        <p class='product_card_description'>{{product.description}}</p>
+        <span class='product_card_price'>${{product.price}}</span>
+    </div>
+</div>
+{% include "products/partials/modal_delete.html" %}
+{% endblock main %}

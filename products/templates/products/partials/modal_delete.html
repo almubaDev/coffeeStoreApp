@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-scrollable">
+      <div class="modal-content moda_delete">
+        <div class="modal-body">
+            <form class='d-flex flex-column align-items-center' action="{% url 'delete_product' product.id %}" method="POST">
+              {% csrf_token %}
+              <div class="w-100 d-flex align-items-center">
+                <h4 class='msn_delete'>¿Desea eleminar el producto {{product.name}}?</h4>
+              </div>
+              <input class='inp_delete' type="submit" value="Eliminar">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}{% static "products/style.css" %}{% endblock css %}
+{% block title %}Editar producto{% endblock title %}
+
+{% block header %}
+{% include "products/partials/header_product_manager.html" %}
+{% endblock header %}
+
+{% block main %}
+<h5 class='page_title'>Editar Producto</h5>
+<form class='product_forms' method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    
+    <input class='update-btn' type="submit" value='Actualizar'>
+    <a class='update-btn page_back' href='{% url "product_detail" product.id %}'>Volver</a>
+</form>
+{% endblock main %}
